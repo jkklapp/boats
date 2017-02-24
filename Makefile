@@ -31,6 +31,8 @@ restart:
 rm:
 	docker-compose rm -f
 
+log: logs
+
 logs:
 	docker-compose logs
 
