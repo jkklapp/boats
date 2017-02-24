@@ -5,6 +5,8 @@ web:
     - "8000"
   links:
     - postgres:postgres
+  volumes:
+    - /app/static
   environment: 
     - CGO_ENABLED=0
     - GOOS=linux
