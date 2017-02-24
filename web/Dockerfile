@@ -1,3 +1,5 @@
-FROM golang:1.8.0-onbuild
-
-RUN go get gopkg.in/gin-gonic/gin.v1
+FROM scratch
+ADD ./go/bin /bin
+ADD ./static /static
+ADD ./templates /templates
+CMD ["./bin/app.a"]

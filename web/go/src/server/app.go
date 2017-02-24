@@ -28,8 +28,7 @@ func main() {
 
     // By default it serves on :8080 unless a
     // PORT environment variable was defined.
-    router.Run()
-    // router.Run(":3000") for a hard coded port
+    router.Run(":8000")
 }
 
 func healthcheck(c *gin.Context) {

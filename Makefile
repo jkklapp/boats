@@ -16,8 +16,22 @@ TEST_REGEX=*test.py
 push:
 	docker-compose push
 
-build:
+build: build-go
 	docker-compose build
+
+build-go: set-envs
+	go build -a -installsuffix cgo -o ./web/go/bin/app.a ./web/go/src/server
+
+set-envs:
+ifeq ($(findstring Windows,$(OS)),Windows)
+	set CGO_ENABLED=0
+	set GOOS=linux
+	set GOARCH=amd64
+else
+	CGO_ENABLED=0
+	GOOS=linux
+	GOARCH=amd64
+endif
 
 up:
 	docker-compose up -d
@@ -27,9 +41,6 @@ down:
 
 restart:
 	docker-compose restart
-
-create_db:
-	docker-compose run api /usr/local/bin/python src/db/create_db.py
 
 rm:
 	docker-compose rm -f
