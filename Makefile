@@ -1,17 +1,5 @@
-
-### Edit these variables ###
-IMG_NAME=go-docker
-PORT=80
-TAG=latest
-### End of edit ###
-
-IMG=whimatthew/$(IMG_NAME)
-CONTAINER=$(IMG_NAME)
-RUNOPTS=-p $(PORT):80
-FQ_IMG?=$(IMG):$(TAG)
-
 SERVICE=app
-TEST_REGEX=*test.py
+
 
 push:
 	docker-compose push
@@ -19,8 +7,14 @@ push:
 build:
 	docker-compose build
 
+run: up
+
+start: up
+
 up:
 	docker-compose up -d
+
+stop: down
 
 down:
 	docker-compose down

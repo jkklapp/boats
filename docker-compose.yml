@@ -1,25 +1,11 @@
 app:
   restart: always
   build: ./app
-  expose:
-    - "8000"
-  links:
-    - postgres:postgres
   volumes:
     - /app/static
   environment:
-    - PORT=8000
-
-data:
-  image: postgres:latest
-  volumes:
-    - /var/lib/postgresql
-  command: "true"
-
-postgres:
-  restart: always
-  image: postgres:latest
-  volumes_from:
-    - data
+    - PORT=${PORT_APP_INTERNAL}
+  expose:
+    - ${PORT_APP_EXTERNAL}
   ports:
-    - "5432:5432"
+    - "${PORT_APP_EXTERNAL}:${PORT_APP_INTERNAL}"
