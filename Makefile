@@ -10,7 +10,7 @@ CONTAINER=$(IMG_NAME)
 RUNOPTS=-p $(PORT):80
 FQ_IMG?=$(IMG):$(TAG)
 
-SERVICE=web
+SERVICE=app
 TEST_REGEX=*test.py
 
 push:
@@ -40,7 +40,6 @@ envs:
 	docker-compose run $(SERVICE) env
 
 enter:
-	docker-compose run $(SERVICE) bash
+	docker-compose run $(SERVICE) /bin/bash
 
-test: build
-	docker-compose run $(SERVICE) bash -c "/usr/local/bin/python -m unittest discover --pattern $(TEST_REGEX)"
+# TODO test

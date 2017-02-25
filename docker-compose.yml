@@ -1,28 +1,14 @@
-web:
+app:
   restart: always
-  build: ./web
+  build: ./app
   expose:
     - "8000"
   links:
     - postgres:postgres
   volumes:
     - /app/static
-  environment: 
-    - CGO_ENABLED=0
-    - GOOS=linux
-    - GOARCH=amd64
-
-nginx:
-  restart: always
-  build: ./nginx/
-  ports:
-    - "80:80"
-  volumes:
-    - /www/static
-  volumes_from:
-    - web
-  links:
-    - web:web
+  environment:
+    - PORT=8000
 
 data:
   image: postgres:latest
