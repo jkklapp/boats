@@ -1,7 +1,10 @@
 {
-	"ImportPath": "github.com/whimatthew/go-docker/app/go",
+	"ImportPath": "github.com/whimatthew/go-docker/backend",
 	"GoVersion": "go1.8",
 	"GodepVersion": "v79",
+	"Packages": [
+		"./src"
+	],
 	"Deps": [
 		{
 			"ImportPath": "github.com/gin-gonic/gin/binding",
