@@ -1,5 +1,7 @@
-SERVICE=app
+SERVICE=backend	
 
+build-deps:
+	$(MAKE) -C ./$(SERVICE) MAKEFLAGS=build-deps
 
 push:
 	docker-compose push
@@ -34,6 +36,6 @@ envs:
 	docker-compose run $(SERVICE) env
 
 enter:
-	docker-compose run $(SERVICE) /bin/bash
+	docker-compose run $(SERVICE) /bin/sh
 
 # TODO test

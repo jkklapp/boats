@@ -1,11 +1,45 @@
-app:
+backend:
   restart: always
-  build: ./app
-  volumes:
-    - /app/static
+  build: ./backend
   environment:
     - PORT=${PORT_APP_INTERNAL}
   expose:
     - ${PORT_APP_EXTERNAL}
   ports:
     - "${PORT_APP_EXTERNAL}:${PORT_APP_INTERNAL}"
+#   links:
+#     - influxdb
+#     - mongodb
+
+# influxdb:
+#   image: influxdb:latest
+#   container_name: influxdb
+#   ports:
+#     - "8083:8083"
+#     - "8086:8086"
+#     - "8090:8090"
+#   environment:
+#     - INFLUXDB_DATA_ENGINE=tsm1
+
+# grafana:
+#   image: grafana/grafana:latest
+#   container_name: grafana
+#   ports:
+#     - "3000:3000"
+#   links:
+#     - influxdb
+
+# mongodata:
+#   image: mongo:3.4.2
+#   volumes:
+#     - /data/db
+#   command: --break-mongo
+
+# mongodb:
+#   image: mongo:3.4.2
+#   volumes_from:
+#     - mongodata
+#   ports:
+#     - "27017:27017"
+#   command: --smallfiles --rest --auth
+
