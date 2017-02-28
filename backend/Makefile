@@ -1,2 +1,5 @@
 build-deps:
-	godep save ./src
+	godep save ./...
+
+test:
+	ginkgo ./test/...

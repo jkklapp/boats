@@ -9,6 +9,9 @@ push:
 build:
 	docker-compose build
 
+build-with-deps: build-deps
+	docker-compose build --no-cache
+
 run: up
 
 start: up
@@ -38,4 +41,5 @@ envs:
 enter:
 	docker-compose run $(SERVICE) /bin/sh
 
-# TODO test
+test:
+	docker-compose run $(SERVICE) /bin/sh -c "go test ./test/..."
