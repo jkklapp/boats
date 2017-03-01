@@ -38,7 +38,7 @@ var _ = Describe("Routes", func() {
 
 			requestResult = sendRequest(router, "GET", baseURL+"/api/v1/healthcheck", nil)
 
-			It("should be HTTP Status longBook", func() {
+			It("should be HTTP Status OK", func() {
 				Expect(requestResult.Code).To(Equal(http.StatusOK))
 			})
 
