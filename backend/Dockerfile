@@ -1,7 +1,7 @@
 FROM golang:1.8.0-alpine
 
 ENV APP_NAME go-docker
-ENV REPO_BASE_URL github.com/whimatthew
+ENV REPO_BASE_URL github.com/typenil
 ENV APP_PATH $GOPATH/src/$REPO_BASE_URL/$APP_NAME/backend
 
 COPY . $APP_PATH
