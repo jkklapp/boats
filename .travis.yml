@@ -14,6 +14,6 @@ script:
   - make build-with-deps
   - make run
   - make test
-  - gocov test ./... | gocov-xml > coverage.xml
+  - gocov test ./... | gocov-xml | tee coverage.xml
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
