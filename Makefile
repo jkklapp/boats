@@ -42,7 +42,7 @@ enter:
 	docker-compose run $(SERVICE) /bin/sh
 
 test:
-	docker-compose run $(SERVICE) /bin/sh -c "go test ./test/..."
+	docker-compose run $(SERVICE) /bin/sh -c "go test ./src/..."
 
 test-local:
 	$(MAKE) -C ./$(SERVICE) MAKEFLAGS=test
